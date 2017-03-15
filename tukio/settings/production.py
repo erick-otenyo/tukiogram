@@ -146,7 +146,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root")
 
 LEAFLET_CONFIG = {
-	'TILES': 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
+	'TILES': 'https://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
 	'DEFAULT_CENTER': (-1.09713135, 37.014170107681),
 	# 'SPATIAL_EXTENT': (37.005162, -1.104895, 37.022709, -1.078673),
 	'SCALE': None,
