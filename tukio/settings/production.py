@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
 	'django.middleware.security.SecurityMiddleware',
+	'whitenoise.middleware.WhiteNoiseMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',
 	'django.middleware.common.CommonMiddleware',
 	'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,12 +133,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
+STATICFILES_DIRS = (
 	os.path.join(BASE_DIR, "static"),
-]
-MEDIA_URL = '/media/'
+)
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root")
 
 LEAFLET_CONFIG = {
 	'TILES': 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
