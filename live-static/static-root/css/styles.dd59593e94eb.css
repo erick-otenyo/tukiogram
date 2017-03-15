@@ -1,0 +1,377 @@
+/* custom template */
+html, body {
+    height: 100%;
+    font-family: comfortaa, arial, sans-serif;
+    background: linear-gradient(#0EBFDA, #B5EBF3);
+    /*color: #555555;*/
+    /*background: linear-gradient(#0EBFDA, #B5EBF3);*/
+    overflow: hidden;
+}
+
+.nav {
+    font-family: comfortaa, Arial, sans-serif;
+    font-size: 13px;
+}
+
+a {
+    color: #222222;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+hr {
+    border-color: #dedede;
+}
+
+.wrapper, .row {
+    height: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.wrapper:before, .wrapper:after,
+.column:before, .column:after {
+    content: "";
+    display: table;
+}
+
+.wrapper:after,
+.column:after {
+    clear: both;
+}
+
+.column {
+    height: 100%;
+    overflow: auto;
+    *zoom: 1;
+}
+
+.column .padding {
+    padding: 20px;
+}
+
+.full {
+    height: 100%;
+    overflow: hidden;
+    padding-top: 50px;
+}
+
+.box {
+    bottom: 0; /* increase for footer use */
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #444444;
+    /*
+      background-image:url('/assets/example/bg_suburb.jpg');
+      background-size:cover;
+      background-attachment:fixed;
+    */
+}
+
+.divider {
+    margin-top: 32px;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.navbar-theme {
+    border-width: 0;
+    background-color: #00bcd9;
+    color: #ffffff;
+    font-family: comfortaa, arial, sans-serif;
+    top: 0;
+    position: fixed;
+    width: inherit;
+}
+
+.navbar-theme li > a, .navbar-toggle {
+    color: #efefef;
+}
+
+.navbar-theme .dropdown-menu li a {
+    color: #2A4888;
+}
+
+.navbar-theme .dropdown-menu li > a {
+    padding-left: 30px;
+}
+
+.navbar-theme li > a:hover, .navbar-theme li > a:focus, .navbar-theme .open, .navbar-theme .open > a, .navbar-theme .open > a:hover, .navbar-theme .open > a:focus {
+    background-color: #00bcd9;
+    color: #fff;
+}
+
+.navbar-form .form-control {
+    color: #00bcd9;
+    border: solid 2px;
+    border-radius: 50px;
+}
+
+#main {
+    background-color: #e9eaed;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#main .img-circle {
+    margin-top: 18px;
+    height: 70px;
+    width: 70px;
+}
+
+#sidebar {
+    padding: 0;
+    padding-top: 15px;
+    background-color: #f1f1f1;
+}
+
+#sidebar, #sidebar a, #sidebar-footer a {
+    color: #ffffff;
+    background-color: transparent;
+    text-shadow: 0 0 2px #000000;
+    padding-left: 5px;
+}
+
+#sidebar .nav li > a:hover {
+    background-color: #393939;
+}
+
+.logo {
+    display: block;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    padding: 3px;
+    color: #666;
+    height: 28px;
+    width: auto;
+    margin: 9px;
+    margin-right: 2px;
+    margin-left: 15px;
+    font-size: 25px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 0 1px;
+}
+
+.logo_t {
+    font-family: comfortaa, arial, sans-serif;
+    color: #00bcd9;
+}
+
+.logo_g {
+    font-family: comfortaa, arial, sans-serif;
+    color: #666;
+}
+
+#sidebar-footer {
+    background-color: #444;
+    position: absolute;
+    bottom: 5px;
+    padding: 5px;
+}
+
+#footer {
+    margin-bottom: 20px;
+}
+
+/* bootstrap overrides */
+
+h1, h2, h3 {
+    font-weight: 800;
+}
+
+.navbar-toggle, .close {
+    outline: 0;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.btn-primary, .label-primary, .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    background-color: #3B5999;
+    color: #fffffe;
+}
+
+.btn-default {
+    color: #666666;
+    text-shadow: 0 0 1px rgba(0, 0, 0, .3);
+}
+
+.form-control {
+
+}
+
+.panel textarea, .well textarea, textarea.form-control {
+    resize: none;
+}
+
+.badge {
+    color: #3B5999;
+    background-color: #fff;
+}
+
+.badge:hover, .badge-inverse {
+    background-color: #3B5999;
+    color: #fff;
+}
+
+.jumbotron {
+    background-color: transparent;
+}
+
+.label-default {
+    background-color: #dddddd;
+}
+
+.page-header {
+    margin-top: 55px;
+    padding-top: 9px;
+    border-top: 1px solid #eeeeee;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.panel-default .panel-heading {
+    background-color: #f9fafb;
+    color: #555555;
+}
+
+.col-sm-9.full {
+    width: 100%;
+}
+
+.modal-header, .modal-footer {
+    background-color: #f2f2f2;
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.modal-footer i, .well i {
+    font-size: 20px;
+    color: #c0c0c0;
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.modal-body textarea.form-control {
+    resize: none;
+    border: 0;
+    box-shadow: 0 0 0;
+}
+
+small.text-muted {
+    font-family: courier, courier-new, monospace;
+}
+
+/* adjust the contents on smaller devices */
+@media (max-width: 768px) {
+
+    .column .padding {
+        padding: 7px;
+    }
+
+    .full {
+        height: 100%;
+        padding-top: 0;
+    }
+
+    .navbar-theme {
+        background-color: #00BCD9;
+        top: 0;
+        width: 100%;
+        position: relative;
+    }
+
+}
+
+/*
+ * off canvas sidebar
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 768px) {
+    .row-offcanvas {
+        position: relative;
+        -webkit-transition: all 0.25s ease-out;
+        -moz-transition: all 0.25s ease-out;
+        transition: all 0.25s ease-out;
+    }
+
+    .row-offcanvas-left.active {
+        left: 33%;
+    }
+
+    .row-offcanvas-left.active .sidebar-offcanvas {
+        left: -33%;
+        position: absolute;
+        top: 0;
+        width: 33%;
+        margin-left: 5px;
+    }
+
+    #sidebar, #sidebar a, #sidebar-footer a {
+        padding-left: 3px;
+    }
+}
+
+.register {
+    background: linear-gradient(#0EBFDA, #B5EBF3);
+}
+
+.leaflet-popup-pane {
+
+}
+
+.leaflet-popup {
+    left: -3px !important;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 10px;
+    border: solid 2px #00bcd9;
+    /*background-color: #00bcd9;*/
+}
+
+.leaflet-popup-content {
+    width: 150px;
+}
+
+.leaflet-popup-tip-container {
+    margin: 0 0 0 -8px;
+    width: 40px;
+    height: 20px;
+    position: relative;
+    overflow: visible;
+
+}
+
+.leaflet-popup-tip {
+    width: 17px;
+    height: 20px;
+    padding: 9px;
+    margin: -18px auto 0 0;
+    -webkit-transform: none;
+    /*-moz-transform: rotate(45deg);*/
+    /*-ms-transform: rotate(45deg);*/
+    /*-o-transform: rotate(45deg);*/
+    /* transform: rotate(45deg); */
+    border-radius: 50%;
+    border: solid 4px #00bcd9;
+}
+
+.popup-alert > .leaflet-popup-content-wrapper {
+    border: solid 2px red;
+}
+
+.popup-alert > .leaflet-popup-tip-container > .leaflet-popup-tip {
+    border: solid 4px red;
+}

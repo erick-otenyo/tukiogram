@@ -1,0 +1,36 @@
+html {
+    height: 100%;
+    background: linear-gradient(#0EBFDA, #B5EBF3);
+}
+
+.login-wrapper {
+    padding-top: 50px;
+}
+
+.login-box {
+    height: 500px;
+    width: 350px;
+    background: linear-gradient(#F3F3F3, #f1f1f1);
+    border-radius: 18px;
+    box-shadow: 0 0 20px #888888;
+
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align: center;
+}
+
+.col-centered {
+    display: inline-block;
+    float: none;
+    /* reset the text-align */
+    text-align: left;
+    /* inline-block space fix */
+    margin-right: -4px;
+}
+
+.col-fixed {
+    /* custom width */
+    width: 350px;
+}
