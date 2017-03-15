@@ -323,8 +323,16 @@ small.text-muted {
     }
 }
 
-.register {
-    background: linear-gradient(#0EBFDA, #B5EBF3);
+/*.register {*/
+/*background: linear-gradient(#0EBFDA, #B5EBF3);*/
+/*}*/
+
+#spinner {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black url(/static/img/loading.gif) center center no-repeat;
+    opacity: .5;
 }
 
 .leaflet-popup-pane {
