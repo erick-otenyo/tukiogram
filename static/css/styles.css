@@ -374,14 +374,6 @@ small.text-muted {
     border: solid 4px red;
 }
 
-.deny {
-    border-radius: 50%;
-}
-
-.confirm {
-    border-radius: 50%;
-}
-
 .badge {
     padding: 1px;
     color: #00BCD9;
