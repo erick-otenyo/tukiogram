@@ -1,0 +1,50 @@
+[
+{
+    "model": "tukiogram.tukio",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "category": "alert",
+        "desc": "A gang spotted at Gate A around Mlandizi.. Take caution",
+        "timestamp": "2017-03-13T18:06:27.573Z",
+        "location_name": "Juja",
+        "location_geom": "SRID=4326;POINT (37.01503694057465 -1.103197537973016)"
+    }
+},
+{
+    "model": "tukiogram.tukio",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "category": "alert",
+        "desc": "No water Gate C",
+        "timestamp": "2017-03-14T06:47:52.787Z",
+        "location_name": "Gate C Juja",
+        "location_geom": "SRID=4326;POINT (37.01017141342164 -1.097656600412367)"
+    }
+},
+{
+    "model": "tukiogram.tukio",
+    "pk": 3,
+    "fields": {
+        "user": 1,
+        "category": "event",
+        "desc": "JKUSA Open Forum",
+        "timestamp": "2017-03-14T07:34:25.734Z",
+        "location_name": "Assembly hall,Jkuat",
+        "location_geom": "SRID=4326;POINT (37.01502084732056 -1.095338461559102)"
+    }
+},
+{
+    "model": "tukiogram.tukio",
+    "pk": 4,
+    "fields": {
+        "user": 1,
+        "category": "event",
+        "desc": "Bahati in JKUAT",
+        "timestamp": "2017-03-14T14:09:07.706Z",
+        "location_name": "BasketBall Court JKUAT",
+        "location_geom": "SRID=4326;POINT (37.0167562365532 -1.0954318576887)"
+    }
+}
+]
