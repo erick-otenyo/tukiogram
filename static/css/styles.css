@@ -2,7 +2,7 @@
 html, body {
     height: 100%;
     font-family: comfortaa, arial, sans-serif;
-    background: linear-gradient(#0EBFDA, #B5EBF3);
+    /*background: linear-gradient(#0EBFDA, #B5EBF3);*/
     /*color: #555555;*/
     /*background: linear-gradient(#0EBFDA, #B5EBF3);*/
     overflow: hidden;
@@ -212,16 +212,6 @@ h1, h2, h3 {
     resize: none;
 }
 
-.badge {
-    color: #3B5999;
-    background-color: #fff;
-}
-
-.badge:hover, .badge-inverse {
-    background-color: #3B5999;
-    color: #fff;
-}
-
 .jumbotron {
     background-color: transparent;
 }
@@ -384,6 +374,16 @@ small.text-muted {
     border: solid 4px red;
 }
 
+.deny {
+    border-radius: 50%;
+}
+
 .confirm {
     border-radius: 50%;
+}
+
+.badge {
+    padding: 1px;
+    color: #00BCD9;
+    background-color: #fff;
 }
