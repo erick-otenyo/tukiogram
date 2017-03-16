@@ -24,6 +24,8 @@
             zoomControl: false,
             closePopupOnClick: false
         });
+        var user_interaction = '<br><button type="button" class="btn btn-default btn-xs" aria-label="Left Align"> <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> </button>    <button type="button" class="btn btn-default btn-xs" aria-label="Left Align"> <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> </button>';
+
 
         //add zoom control at our desired position
         L.control.zoom({
@@ -73,11 +75,11 @@
                         if (feature.properties.category == 'alert') {
                             pop_ = L.popup({className: 'popup-alert'})
                                     .setLatLng(latlng)
-                                    .setContent(feature.properties.desc);
+                                    .setContent(feature.properties.desc + user_interaction);
                         } else {
                             pop_ = L.popup({})
                                     .setLatLng(latlng)
-                                    .setContent(feature.properties.desc);
+                                    .setContent(feature.properties.desc + user_interaction);
                         }
                         //return a marker with popup and style information
                         return getIcon(feature.properties.category, latlng).bindPopup(pop_);
@@ -86,7 +88,7 @@
                     //but I guess there is a better way than this, I jus needed it to work.
                     onEachFeature: function (feature, layer) {
                         var layer_cat = feature.properties.category;
-                        var popupContent = feature.properties.desc;
+                        var popupContent = feature.properties.desc + user_interaction;
                         if (layer_cat == 'alert') {
                             var pop = L.popup({className: 'popup-alert'})
                                     .setLatLng(layer.getLatLng())
