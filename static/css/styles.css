@@ -383,3 +383,7 @@ small.text-muted {
 .popup-alert > .leaflet-popup-tip-container > .leaflet-popup-tip {
     border: solid 4px red;
 }
+
+.confirm {
+    border-radius: 50%;
+}

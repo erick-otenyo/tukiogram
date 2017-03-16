@@ -31,11 +31,11 @@
                 </ul>
 
                 <ul class="nav hidden-xs" id="lg-menu">
-                    <li class="active"><a href="#"><i class="glyphicon glyphicon-list-alt"></i>Home</a>
+                    <li class="active"><a href="#"><i class="glyphicon glyphicon-map-marker"></i> Home</a>
                     </li>
-                    <li><a href="#"><i class="glyphicon glyphicon-list"></i>Find a tukio</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i>My tukio</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-refresh"></i>Settings</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-search"></i> Find a tukio</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
                 </ul>
                 <ul class="list-unstyled hidden-xs" id="sidebar-footer">
                     <li>
@@ -46,10 +46,10 @@
 
                 <!-- tiny only nav-->
                 <ul class="nav visible-xs" id="xs-menu">
-                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-list-alt"></i></a></li>
-                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-list"></i></a></li>
-                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-paperclip"></i></a></li>
-                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-refresh"></i></a></li>
+                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-map-marker"></i></a></li>
+                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-search"></i></a></li>
+                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-user"></i></a></li>
+                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-cog"></i></a></li>
                 </ul>
 
             </div>
@@ -72,17 +72,19 @@
                                 class="logo_g">gram</span></a>
                     </div>
                     <nav class="collapse navbar-collapse" role="navigation">
+
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="#"><span class="badge">Notifications</span></a>
+                                <a href="#"><span class="notification">Notifications</span></a>
+                            </li>
+                            <li>
+                                <form class="navbar-form navbar">
+                                    <input type="text" class="form-control" placeholder="Search by Location"
+                                           name="search-loc"
+                                           id="srch-term">
+                                </form>
                             </li>
                         </ul>
-                        <form class="navbar-form navbar-right">
-                            <input type="text" class="form-control" placeholder="Search by Location"
-                                   name="srch-term"
-                                   id="srch-term">
-
-                        </form>
                     </nav>
                 </div>
                 <!-- /top nav -->
