@@ -321,7 +321,7 @@ small.text-muted {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: black url(/static/img/loading.gif) center center no-repeat;
+    background: black url("/static/img/loading.0b9e55bd5653.gif") center center no-repeat;
     opacity: .5;
 }
 
