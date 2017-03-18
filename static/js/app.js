@@ -15,11 +15,13 @@ var map = L.map('tukio-homemap', {
 map.zoomControl.setPosition('bottomright');
 var user_interaction = '<br><button type="button" title="Confirm" class="btn btn-default btn-xs" aria-label="Left Align"> <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><span class="badge">4</span></button>    <button type="button" title="Deny" class="btn btn-default btn-xs" aria-label="Left Align"> <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> <span class="badge"></span> </button>';
 
+//add  a spinner until tukios are loaded
+map.spin(true);
+
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZXJpY2tvdGVueW8iLCJhIjoiY2owYXlsb2kxMDAwcjJxcDk3a2Q0MmdpZSJ9.GJQzHfNMElZ7OhW_HbnaXw', {
     maxZoom: 18,
     attribution: ' Tiles &copy; <a href="http://www.mapbox.com">MapBox</a>'
 }).addTo(map);
-
 
 //function to return an icon based on the tukio category--- an alert is red, --- an event is blue
 function getIcon(category, latlng) {
@@ -42,7 +44,6 @@ function getIcon(category, latlng) {
     }
 
 }
-
 
 $.ajax({
     methods: "GET",
@@ -85,9 +86,14 @@ $.ajax({
         });
 
         //add the tukio_layer now to the map
+
         map.addLayer(tukio_layer);
 
+        // remove spinner after tukios are added to map
+        map.spin(false);
+
         // fit the map to the extent/bounds of the tukio layer
+
         map.fitBounds(tukio_layer.getBounds());
     }
 });
