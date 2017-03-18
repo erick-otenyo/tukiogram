@@ -1,5 +1,12 @@
 .idea
 tukio/settings/local.py
+static/css/bootstrap.min.css
+static/js/bootstrap.min.js
+static/js/jquery-2.1.4.min.js
+static/js/leaflet.js
+static/css/leaflet.css
+static/css/bootstrap.css
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
