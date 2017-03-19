@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .forms import TukioForm
+
 
 # Create your views here.
 
@@ -8,4 +10,11 @@ def LoginView(request):
 
 
 def IndexView(request):
-	return render(request, 'index.html')
+	if request.user.is_authenticated():
+		form = TukioForm
+	else:
+		form = None
+	context = {
+		'tukio_form': form
+	}
+	return render(request, 'index.html', context)

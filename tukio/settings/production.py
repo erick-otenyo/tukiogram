@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	'django.contrib.gis',
 	# third party apps
+	'crispy_forms',
 	'rest_framework',
 	'rest_framework_gis',
 	'leaflet',
@@ -117,7 +118,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
 	'DEFAULT_RENDERER_CLASSES': (
-		'rest_framework.renderers.JSONRenderer', # disable browsable REST api
+		'rest_framework.renderers.JSONRenderer',
+		'rest_framework.renderers.BrowsableAPIRenderer',# disable browsable REST api
 	)
 }
 

@@ -1,4 +1,4 @@
-// Geoexplorer
+// Geo-explorer
 if (typeof console !== 'undefined' && typeof console.log === 'function' && !window.test) {
     console.log('\r\n%c                     *      .--.\r\n%c                           \/ \/  `\r\n%c          +               | |\r\n%c                 \'         \\ \\__,\r\n%c             *          +   \'--\'  *\r\n%c                 +   \/\\\r\n%c    +              .\'  \'.   *\r\n%c           *      \/======\\      +\r\n%c                 ;:.  _   ;\r\n%c                 |:. (_)  |\r\n%c                 |:.  _   |\r\n%c       +         |:. (_)  |          *\r\n%c                 ;:.      ;\r\n%c               .\' \\:.    \/ `.\r\n%c              \/ .-\'\':._.\'`-. \\\r\n%c              |\/    \/||\\    \\|\r\n%c            _..--\"\"\"````\"\"\"--.._\r\n%c      _.-\'``                    ``\'-._\r\n%c    -\'         %cHello, explorer%c        \'-\r\n%c' +
         '\n       Curious about maps? Visit us at axisspatial.co.ke',
@@ -18,10 +18,10 @@ var user_interaction = '<br><button type="button" title="Confirm" class="btn btn
 //add  a spinner until tukios are loaded
 map.spin(true);
 
-L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZXJpY2tvdGVueW8iLCJhIjoiY2owYXlsb2kxMDAwcjJxcDk3a2Q0MmdpZSJ9.GJQzHfNMElZ7OhW_HbnaXw', {
-    maxZoom: 18,
-    attribution: ' Tiles &copy; <a href="http://www.mapbox.com">MapBox</a>'
-}).addTo(map);
+// L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZXJpY2tvdGVueW8iLCJhIjoiY2owYXlsb2kxMDAwcjJxcDk3a2Q0MmdpZSJ9.GJQzHfNMElZ7OhW_HbnaXw', {
+//     maxZoom: 18,
+//     attribution: ' Tiles &copy; <a href="http://www.mapbox.com">MapBox</a>'
+// }).addTo(map);
 
 //function to return an icon based on the tukio category--- an alert is red, --- an event is blue
 function getIcon(category, latlng) {
@@ -36,7 +36,7 @@ function getIcon(category, latlng) {
     } else {
         return L.marker(latlng, {
             icon: L.icon({
-                iconUrl: "/static/img/circle.png",
+                iconUrl: "/static/img/alert.png",
                 iconSize: [23, 33],
                 popupAnchor: [0, 0]
             })
@@ -66,11 +66,11 @@ $.ajax({
                         .setContent(feature.properties.desc + user_interaction);
                 }
 
-                //return a marker with popup and style information
+                //return a marker and attach a popup with style information
                 return getIcon(feature.properties.category, latlng).bindPopup(pop_);
             },
 
-            // this is a hack to  enable the alert tukios have their popup open on the initial load,---
+            // this is a small hack to  enable the alert tukios have their popup open on the initial load,---
             //but I guess there is a better way than this..yet to find out
             onEachFeature: function (feature, layer) {
                 var layer_cat = feature.properties.category;
@@ -93,14 +93,15 @@ $.ajax({
         map.spin(false);
 
         // fit the map to the extent/bounds of the tukio layer
-
         map.fitBounds(tukio_layer.getBounds());
     }
 });
+
+//Geo-location
 L.control.locate({
     position: 'bottomright',
     icon: 'glyphicon glyphicon-screenshot',
-    iconLoading: "glyphicon glyphicon-refresh glyphicon-spin",
+    iconLoading: "glyphicon gly phicon-refresh glyphicon-spin",
     markerStyle: {
         stroke: true,
         color: '#2C2D29',
@@ -117,3 +118,51 @@ L.control.locate({
     }
 
 }).addTo(map);
+
+
+// Enable picking of location when user clicks on the add tukio button
+
+$(".add-button").on('click', function () {
+    enableAddTukio();
+});
+
+// The location-pick enabling function
+function enableAddTukio() {
+    map.on('click', addTukio)
+}
+
+//Show new tukio entry form modal, pick location of clicked area,set it in the form and disable further map clicks
+function addTukio(e) {
+    $('#postModal').modal('show');
+    var lat = e.latlng.lat.toString();
+    var lng = e.latlng.lng.toString();
+    $('#location_geom').val("POINT (" + lng + " " + lat + ")");
+    map.off('click', addTukio);
+}
+
+// Handle a user-cancelled tukio-form
+$(".tukio-cancel-form").click(function (e) {
+    e.preventDefault();
+    $(".tukio-form").trigger('reset');
+    $('#postModal').modal('hide');
+});
+
+//Ajax --- Handle a  valid tukio submission to server, hide form modal if ajax successful, add the new tukio to map, reset tukio form,
+$(".tukio-form").submit(function (e) {
+    e.preventDefault();
+
+    var addTukioAPIEndpoint = 'api/tukios/add/';
+    $.ajax({
+        method: "POST",
+        data: $(this).serialize(),
+        url: addTukioAPIEndpoint,
+        success: function (data) {
+            $('#postModal').modal('hide');
+            tukio_layer.addData(data);
+            $(".tukio-form").trigger('reset');
+        },
+        error: function (error) {
+            console.log(error)
+        }
+    })
+});

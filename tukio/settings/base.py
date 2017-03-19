@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	'django.contrib.gis',
 	# third party apps
+	'crispy_forms',
 	'rest_framework',
 	'rest_framework_gis',
 	'leaflet',
@@ -107,11 +108,11 @@ AUTH_PASSWORD_VALIDATORS = [
 		'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
 	},
 ]
-REST_FRAMEWORK = {
-	'DEFAULT_RENDERER_CLASSES': (
-		'rest_framework.renderers.JSONRenderer',
-	)
-}
+# REST_FRAMEWORK = {
+# 	'DEFAULT_RENDERER_CLASSES': (
+# 		'rest_framework.renderers.JSONRenderer',
+# 	)
+# }
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
