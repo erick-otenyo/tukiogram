@@ -24,7 +24,7 @@ SECRET_KEY = 'elhp2y-qqsc%w13x%9%t3*o=kq)xygn!*)uc)y@u_b=b!lf@x-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['tukiogram.herokuapp.com']
+ALLOWED_HOSTS = ['tukiogram.herokuapp.com','.tukiogram.com']
 
 # Application definition
 
