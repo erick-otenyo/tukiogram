@@ -18,10 +18,10 @@ var user_interaction = '<br><button type="button" title="Confirm" class="btn btn
 //add  a spinner until all tukios are loaded
 map.spin(true);
 
-// L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZXJpY2tvdGVueW8iLCJhIjoiY2owYXlsb2kxMDAwcjJxcDk3a2Q0MmdpZSJ9.GJQzHfNMElZ7OhW_HbnaXw', {
-//     maxZoom: 18,
-//     attribution: ' Tiles &copy; <a href="http://www.mapbox.com">MapBox</a>'
-// }).addTo(map);
+L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZXJpY2tvdGVueW8iLCJhIjoiY2owYXlsb2kxMDAwcjJxcDk3a2Q0MmdpZSJ9.GJQzHfNMElZ7OhW_HbnaXw', {
+    maxZoom: 18,
+    attribution: ' Tiles &copy; <a href="http://www.mapbox.com">MapBox</a>'
+}).addTo(map);
 
 //function to return an icon based on the tukio category--- an alert is red, --- an event is blue
 function getIcon(category, latlng) {
