@@ -1,16 +1,101 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{#{% load crispy_forms_tags %}#}
+{% load crispy_forms_tags %}
 
 
-{% block content %}
-{#    <div class='col-sm-6 col-sm-offset-3 register'>#}
-{#        <h1>{{ title }}</h1>#}
-{#        <hr/>#}
-{##}
-{#        <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}#}
-{#            {{ form }}#}
-{#            <input type='submit' class='btn btn-default' value='{{ title }}'/>#}
-{#        </form>#}
-{#    </div>#}
-{% endblock content %}
+
+{% block meta-desc %}
+    {% if title == 'Login' %}
+        <meta name="description" content="Log into Tukiogram to tell people what is happening around your location">
+    {% else %}
+        <meta name="description"
+              content="Create a Tukiogram account and let the world know what is taking place where you are">
+    {% endif %}
+{% endblock meta-desc %}
+
+{% block page-content %}
+    {% if title == 'Login' %}
+        <div class="reglog-container">
+            <div class='col-sm-6 col-sm-offset-3 register'>
+                <h3>{{ title }}</h3>
+                <hr/>
+                <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+                    {{ form|crispy }}
+                    <br>
+                    <input type='submit' class='btn btn-info' value='{{ title }}'/>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <div class="reglog-container container">
+            <div class="row">
+                <form method='POST' action='' enctype='multipart/form-data' class="form-horizontal">{% csrf_token %}
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend>Register</legend>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            {{ form.non_field_errors }}
+                            <label class="col-md-4 control-label" for="id_first_name">First Name</label>
+                            <div class="col-md-4">
+                                <input id="id_first_name" name="first_name" placeholder="Your First Name"
+                                       class="form-control input-md" maxlength="30" type="text" required>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="id_last_name">Last Name</label>
+                            <div class="col-md-4">
+                                <input id="id_last_name" name="last_name" placeholder="Your Last Name"
+                                       class="form-control input-md" maxlength="30" type="text" required>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+
+
+                            <label class="col-md-4 control-label" for="id_email">Email</label>
+                            <div class="col-md-4">
+                                <input id="id_email" name="email" placeholder="Your Email"
+                                       class="form-control input-md" type="email" required>
+                                <span class="help-block">  {{ form.email.errors }} </span>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+
+                            <label class="col-md-4 control-label" for="id_email2">Confirm Email</label>
+                            <div class="col-md-4">
+                                <input id="id_email2" name="email2" placeholder="Confirm Email"
+                                       class="form-control input-md" type="email" required>
+                                <span class="help-block">  {{ form.email2.errors }} </span>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="id_password">Password</label>
+                            <div class="col-md-4">
+                                <input id="id_password" name="password" placeholder="Password"
+                                       class="form-control input-md" type="password" required>
+                                <span class="help-block"> {{ form.password.errors }} </span>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="singlebutton"> </label>
+                            <div class="col-md-4">
+                                <input type='submit' class='btn btn-info' value='{{ title }}'/>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+
+            </div>
+        </div>
+    {% endif %}
+{% endblock page-content %}

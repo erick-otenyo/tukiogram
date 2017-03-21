@@ -16,15 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from accounts.views import (register_view, logout_view)
-from tukiogram.views import IndexView, LoginView
+from accounts.views import (register_view, login_view, logout_view)
+from tukiogram.views import IndexView
 
 urlpatterns = [
 	url(r'^$', IndexView, name='index'),
 	url(r'^admin/', admin.site.urls),
 	url(r'^register/', register_view, name='register'),
-	# url(r'^login/', login_view, name='login'),
-	url(r'^login/', LoginView, name='login'),
+	url(r'^login/', login_view, name='login'),
 	url(r'^logout/', logout_view, name='logout'),
 	url(r'^api/', include('tukiogram.api.urls')),
 ]

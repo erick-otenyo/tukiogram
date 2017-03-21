@@ -189,3 +189,7 @@ body {
 #postModal {
     top: 30%;
 }
+
+.reglog-container {
+    padding: 70px 30px 30px 30px;
+}
