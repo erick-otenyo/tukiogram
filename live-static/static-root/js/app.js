@@ -123,6 +123,7 @@ L.control.locate({
 // Enable picking of location when user clicks on the add tukio button
 
 $(".add-button").on('click', function () {
+    $("#add-help").show();
     enableAddTukio();
 });
 
@@ -138,6 +139,8 @@ function addTukio(e) {
     var lng = e.latlng.lng.toString();
     $('#location_geom').val("POINT (" + lng + " " + lat + ")");
     map.off('click', addTukio);
+    $("#add-help").hide();
+
 }
 
 // Handle a cancelled tukio-form

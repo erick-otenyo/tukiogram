@@ -8,11 +8,11 @@ User = get_user_model()
 
 
 class UserLoginForm(forms.Form):
-	username = forms.CharField()
+	email = forms.CharField()
 	password = forms.CharField(widget=forms.PasswordInput)
 	
 	def clean(self, *args, **kwargs):
-		email = self.cleaned_data.get("username")
+		email = self.cleaned_data.get("email")
 		password = self.cleaned_data.get("password")
 		
 		# user_qs = User.objects.filter(username=username)
@@ -37,6 +37,8 @@ class UserRegisterForm(forms.ModelForm):
 	class Meta:
 		model = User
 		fields = [
+			'first_name',
+			'last_name',
 			'email',
 			'email2',
 			'password'

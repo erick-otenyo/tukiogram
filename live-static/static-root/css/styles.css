@@ -187,9 +187,17 @@ body {
 }
 
 #postModal {
-    top: 30%;
+    top: 20%;
 }
 
 .reglog-container {
     padding: 70px 30px 30px 30px;
+}
+
+#add-help {
+    bottom: 5px;
+    left: 45px;
+    color: #000;
+    font-weight: 700;
+    display: none;
 }
