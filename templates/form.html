@@ -22,7 +22,8 @@
                 <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
                     {{ form|crispy }}
                     <br>
-                    <input type='submit' class='btn btn-info' value='{{ title }}'/>
+                    <input type='submit' class='btn btn-info' value='{{ title }}'/> <span> <h5>New here? <a
+                            href="/register">Register</a></h5> </span>
                 </form>
             </div>
         </div>

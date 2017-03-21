@@ -201,3 +201,7 @@ body {
     font-weight: 700;
     display: none;
 }
+
+.login-to-add {
+    color: #000;
+}
