@@ -77,9 +77,11 @@ $.ajax({
             }
         });
 
-        //add the tukio_layer now to the map
+        var tukios = L.markerClusterGroup();
+        tukios.addLayer(tukio_layer);
 
-        map.addLayer(tukio_layer);
+        //add the tukio_layer now to the map
+        map.addLayer(tukios);
 
         // remove spinner after tukios are added to map
         map.spin(false);

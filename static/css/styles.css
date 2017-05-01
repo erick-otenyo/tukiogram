@@ -205,3 +205,60 @@ body {
 .login-to-add {
     color: #000;
 }
+
+/*************************/
+/* Marker cluster styles */
+/*************************/
+
+.marker-cluster-small,
+.leaflet-oldie .marker-cluster-small {
+    background-color: white;
+    border: solid 5px rgb(226, 119, 105);
+}
+
+.marker-cluster-small div,
+.leaflet-oldie .marker-cluster-small div {
+    background-color: rgb(226, 119, 105);
+}
+
+.marker-cluster-medium,
+.leaflet-oldie .marker-cluster-medium {
+    background-color: white;
+    border: solid 5px rgb(214, 62, 42);
+}
+
+.marker-cluster-medium div,
+.leaflet-oldie .marker-cluster-medium div {
+    background-color: rgb(214, 62, 42);
+}
+
+.marker-cluster-large,
+.leaflet-oldie .marker-cluster-large {
+    background-color: white;
+    border: solid 5px rgb(149, 43, 29);
+}
+
+.marker-cluster-large div,
+.leaflet-oldie .marker-cluster-large div {
+    background-color: rgb(149, 43, 29);
+}
+
+.marker-cluster {
+    background-clip: padding-box;
+    border-radius: 30px;
+}
+
+.marker-cluster div {
+    width: 28px;
+    height: 28px;
+    margin-left: 1px;
+    margin-top: 0.13rem;
+    text-align: center;
+    border-radius: 15px;
+    font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.marker-cluster span {
+    line-height: 30px;
+}
