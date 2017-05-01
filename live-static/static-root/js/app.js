@@ -27,22 +27,18 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{
 function getIcon(category, latlng) {
     if (category == 'event') {
         return L.marker(latlng, {
-            icon: L.icon({
-                iconUrl: "/static/img/event.png",
-                iconSize: [23, 33],
-                popupAnchor: [0, 0]
+            icon: L.icon.pulse({
+                iconSize: [25, 25],
+                color: '#00BCD9',
+                animate: false,
+                heartbeat: '0.5'
             })
         });
     } else {
         return L.marker(latlng, {
-            icon: L.icon({
-                iconUrl: "/static/img/alert.png",
-                iconSize: [23, 33],
-                popupAnchor: [0, 0]
-            })
+            icon: L.icon.pulse({iconSize: [25, 25], color: 'red'})
         });
     }
-
 }
 
 $.ajax({
@@ -74,28 +70,26 @@ $.ajax({
             //but I guess there is a better way than this..yet to find out
             onEachFeature: function (feature, layer) {
                 var layer_cat = feature.properties.category;
-                var popupContent = feature.properties.desc + user_interaction;
-                // if (layer_cat == 'alert') {
-                //     var pop = L.popup({className: 'popup-alert'})
-                //         .setLatLng(layer.getLatLng())
-                //         .setContent(popupContent);
-                //     map.addLayer(pop);
-                // }
-
-            }
-        });
-
-        //add the tukio_layer now to the map
-
-        map.addLayer(tukio_layer);
-
-        // remove spinner after tukios are added to map
-        map.spin(false);
-
-        // fit the map to the extent/bounds of the tukio layer
-        map.fitBounds(tukio_layer.getBounds());
+                layer.on({
+                    click: function () {
+                    }
+                }
+            });
     }
 });
+
+//add the tukio_layer now to the map
+
+map.addLayer(tukio_layer);
+
+// remove spinner after tukios are added to map
+map.spin(false);
+
+// fit the map to the extent/bounds of the tukio layer
+map.fitBounds(tukio_layer.getBounds());
+}
+})
+;
 
 //Geo-location
 L.control.locate({
