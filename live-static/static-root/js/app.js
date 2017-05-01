@@ -73,23 +73,21 @@ $.ajax({
                 layer.on({
                     click: function () {
                     }
-                }
-            });
+                });
+            }
+        });
+
+        //add the tukio_layer now to the map
+
+        map.addLayer(tukio_layer);
+
+        // remove spinner after tukios are added to map
+        map.spin(false);
+
+        // fit the map to the extent/bounds of the tukio layer
+        map.fitBounds(tukio_layer.getBounds());
     }
 });
-
-//add the tukio_layer now to the map
-
-map.addLayer(tukio_layer);
-
-// remove spinner after tukios are added to map
-map.spin(false);
-
-// fit the map to the extent/bounds of the tukio layer
-map.fitBounds(tukio_layer.getBounds());
-}
-})
-;
 
 //Geo-location
 L.control.locate({
