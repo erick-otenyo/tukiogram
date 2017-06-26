@@ -40,39 +40,41 @@ function getIcon(category, latlng) {
         });
     }
 }
+// initialize a layer that takes the returned GeoJSON data
+var tukio_layer = new L.GeoJSON(null, {
+
+    pointToLayer: function (feature, latlng) {
+
+        //determine the category of a tukio then add a popup with a class for styling it uniquely
+        if (feature.properties.category == 'alert') {
+            pop_ = L.popup({className: 'popup-alert'})
+                .setLatLng(latlng)
+                .setContent(feature.properties.desc + user_interaction);
+        } else {
+            pop_ = L.popup({})
+                .setLatLng(latlng)
+                .setContent(feature.properties.desc + user_interaction);
+        }
+
+        //return a marker and attach a popup with style information
+        return getIcon(feature.properties.category, latlng).bindPopup(pop_);
+    }
+    // removed code for alert pops
+});
+
+// cluster layer
+var tukios = L.markerClusterGroup();
 
 $.ajax({
     methods: "GET",
     url: '/api/tukios',//our api endpoint
     success: function (data) {
+        tukio_layer.addData(data);
 
-        // initialize a layer that takes the returned GeoJSON data
-        tukio_layer = new L.GeoJSON(data, {
-
-            pointToLayer: function (feature, latlng) {
-
-                //determine the category of a tukio then add a popup with a class for styling it uniquely
-                if (feature.properties.category == 'alert') {
-                    pop_ = L.popup({className: 'popup-alert'})
-                        .setLatLng(latlng)
-                        .setContent(feature.properties.desc + user_interaction);
-                } else {
-                    pop_ = L.popup({})
-                        .setLatLng(latlng)
-                        .setContent(feature.properties.desc + user_interaction);
-                }
-
-                //return a marker and attach a popup with style information
-                return getIcon(feature.properties.category, latlng).bindPopup(pop_);
-            }
-            // removed code for alert pops
-        });
-
-        //add the tukio_layer now to the map
-        var tukios = L.markerClusterGroup();
+        //add the tukio_layer now to the clusters layer
         tukios.addLayer(tukio_layer);
 
-        //add the tukio_layer now to the map
+        //add the tukio_cluster layer now to the map
         map.addLayer(tukios);
 
         // remove spinner after tukios are added to map
@@ -148,6 +150,7 @@ $(".tukio-form").submit(function (e) {
         success: function (data) {
             $('#postModal').modal('hide');
             tukio_layer.addData(data);
+            tukios.addLayer(tukio_layer);
             $(".tukio-form").trigger('reset');
         },
         error: function (error) {
