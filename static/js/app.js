@@ -27,22 +27,18 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{
 function getIcon(category, latlng) {
     if (category == 'event') {
         return L.marker(latlng, {
-            icon: L.icon({
-                iconUrl: "/static/img/event.png",
-                iconSize: [23, 33],
-                popupAnchor: [0, 0]
+            icon: L.icon.pulse({
+                iconSize: [25, 25],
+                color: '#00BCD9',
+                animate: false,
+                heartbeat: '0.5'
             })
         });
     } else {
         return L.marker(latlng, {
-            icon: L.icon({
-                iconUrl: "/static/img/alert.png",
-                iconSize: [23, 33],
-                popupAnchor: [0, 0]
-            })
+            icon: L.icon.pulse({iconSize: [25, 25], color: 'red'})
         });
     }
-
 }
 
 $.ajax({
