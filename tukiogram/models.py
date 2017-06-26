@@ -15,7 +15,7 @@ class Tukio(models.Model):
 	category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
 	desc = models.CharField(max_length=70)
 	timestamp = models.DateTimeField(auto_now_add=True)
-	location_name = models.CharField(max_length=100, null=True)
+	location_name = models.CharField(max_length=100, null=True,blank=True)
 	location_geom = models.PointField(srid=4326, unique=True)
 	
 	def __unicode__(self):
