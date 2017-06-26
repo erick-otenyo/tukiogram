@@ -69,20 +69,7 @@ $.ajax({
                 //return a marker and attach a popup with style information
                 return getIcon(feature.properties.category, latlng).bindPopup(pop_);
             }
-
-            // this is a small hack to  enable the alert tukios have their popup open on the initial load,---
-            //but I guess there is a better way than this..yet to find out
-            // onEachFeature: function (feature, layer) {
-            //     var layer_cat = feature.properties.category;
-            //     var popupContent = feature.properties.desc + user_interaction;
-            //     if (layer_cat == 'alert') {
-            //         var pop = L.popup({className: 'popup-alert'})
-            //             .setLatLng(layer.getLatLng())
-            //             .setContent(popupContent);
-            //         map.addLayer(pop);
-            //     }
-            //
-            // }
+            // removed code for alert pops
         });
 
         //add the tukio_layer now to the map
