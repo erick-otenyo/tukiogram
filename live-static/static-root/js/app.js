@@ -63,7 +63,9 @@ var tukio_layer = new L.GeoJSON(null, {
 });
 
 // cluster layer
-var tukios = L.markerClusterGroup();
+var tukios = L.markerClusterGroup({
+    showCoverageOnHover: false,
+});
 
 $.ajax({
     methods: "GET",
