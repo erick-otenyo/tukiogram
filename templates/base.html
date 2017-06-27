@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#000000">
-    {% block meta-desc %}
-        <meta name="description"
-              content="Know what is happening around you on Tukiogram. Tell people about an event happening at some location or post an alert incase of anything.On a map.">
-    {% endblock meta-desc %}
+    <meta name="theme-color" content="#000000"> {% block meta-desc %}
+    <meta name="description" content="Know what is happening around you on Tukiogram. Tell people about an event happening at some location or post an alert incase of anything.On a map."> {% endblock meta-desc %}
     <title>Tukiogram | What-Where</title>
+    <link rel="icon" type="image/png" href="/static/img/favicon.png' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.5/MarkerCluster.css">
     <link rel="stylesheet" href="/static/css/styles.css">
     <link rel="stylesheet" href="/static/css/L.Icon.Pulse.css">
 </head>
+
 <body>
-<header id="header" role="banner">
-    <div id="nav-cont" class="container-fluid">
-        <div id="navbar" class="navbar navbar-default">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="/" class="navbar-brand logo"><span class="logo_t">Tukio</span><span
+    <header id="header" role="banner">
+        <div id="nav-cont" class="container-fluid">
+            <div id="navbar" class="navbar navbar-default">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="navbar-brand logo"><span class="logo_t">Tukio</span><span
                         class="logo_g">gram</span></a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    {% if user.is_authenticated %}
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
                         <li>
                             <a href="/notifications"><span class="notification add-new">Notifications</span></a>
                         </li>
@@ -44,107 +44,104 @@
                         <li>
                             <a href="/logout"><span class="logout">Logout</span></a>
                         </li>
-                    {% else %}
+                        {% else %}
                         <li>
                             <a href="/register"><span class="notification add-new">Sign Up</span></a>
                         </li>
                         <li>
                             <a href="/login"><span class="notification add-new">Log In</span></a>
                         </li>
-                    {% endif %}
-                    <li>
-                        <form class="navbar-form navbar">
-                            <input type="text" class="form-control" placeholder="Search by Location"
-                                   name="search-loc"
-                                   id="srch-term">
-                        </form>
-                    </li>
-                </ul>
+                        {% endif %}
+                        <li>
+                            <form class="navbar-form navbar">
+                                <input type="text" class="form-control" placeholder="Search by Location" name="search-loc" id="srch-term">
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</header>{% block page-content %}
+    </header>{% block page-content %}
     <div id="container">
         <div id="tukio-homemap"></div>
         {% if user.is_authenticated %}
-            <div class="leaflet-bottom leaflet-left leaflet-add-tukio">
-                <button type="button" title="Add a tukio" class="btn btn-default btn-xs  add-button"><img
-                        src="/static/img/new_tukio.png"></button>
-            </div>
-            <div id="add-help" class="leaflet-bottom leaflet-left leaflet-add-help">
-                <h4>Click at the location to add..</h4>
-            </div>
+        <div class="leaflet-bottom leaflet-left leaflet-add-tukio">
+            <button type="button" title="Add a tukio" class="btn btn-default btn-xs  add-button"><img src="/static/img/new_tukio.png"></button>
+        </div>
+        <div id="add-help" class="leaflet-bottom leaflet-left leaflet-add-help">
+            <h4>Click at the location to add..</h4>
+        </div>
         {% else %}
-            <div class="leaflet-bottom leaflet-left leaflet-add-tukio">
-                <h4 class="login-to-add"><a href="/login">Login </a>to add a tukio</h4>
-            </div>
+        <div class="leaflet-bottom leaflet-left leaflet-add-tukio">
+            <h4 class="login-to-add"><a href="/login">Login </a>to add a tukio</h4>
+        </div>
         {% endif %}
     </div>
     <div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 {% if user.is_authenticated %}
-                    <div class="modal-header">
-                        <button type="button" class="close tukio-cancel-form" data-dismiss="modal" aria-hidden="true">×
-                        </button>
-                        What is happening here {{ user.first_name }}?
-                    </div>
-                    <div class="modal-body">
-                        <form class="form center-block tukio-form">{% csrf_token %}
-                            <div class="form-group">
-                                <label for="id_category">An alert or an event ?
-                                    <small>Alerts appear in red.</small>
-                                </label>
-                                <select class="form-control" id="id_category" name="category" required>
-                                    <option value="" selected="selected">---------</option>
-                                    <option value="alert">Alert</option>
-                                    <option value="event">Event</option>
-                                </select>
-                            </div>
-                            <input type="hidden" name="user" value="{{ user.id }}">
-                            <input id="location_geom" type="hidden" name="location_geom" value="">
-                            <div class="form-group">
-                        <textarea class="form-control input-lg" maxlength="70" autofocus=""
-                                  placeholder="Short description of the tukio.." name="desc" required></textarea>
-                            </div>
-                            <div class="modal-footer">
-                                <div>
-                                    <button class="btn btn-danger btn-sm tukio-cancel-form" aria-hidden="true">Cancel
-                                    </button>
-                                    <input type='submit' class='btn btn-info btn-sm' value='Post'/>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                {% else %}
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        Sign In
-                    </div>
-                    <div class="modal-body">
-                        <h5>You need to be signed in to post a tukio..</h5>
-                    </div>
-                    <div class="modal-footer">
-                        <div>
-                            <a class="btn btn-info" href="/login" role="button">Sign In</a>
-                            <ul class="pull-left list-inline">
-                                <li><a href="/register">New here ? Register</a></li>
-                            </ul>
+                <div class="modal-header">
+                    <button type="button" class="close tukio-cancel-form" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    What is happening here {{ user.first_name }}?
+                </div>
+                <div class="modal-body">
+                    <form class="form center-block tukio-form">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_category">An alert or an event ?
+                                <small>Alerts appear in red.</small>
+                            </label>
+                            <select class="form-control" id="id_category" name="category" required>
+                                <option value="" selected="selected">---------</option>
+                                <option value="alert">Alert</option>
+                                <option value="event">Event</option>
+                            </select>
                         </div>
+                        <input type="hidden" name="user" value="{{ user.id }}">
+                        <input id="location_geom" type="hidden" name="location_geom" value="">
+                        <div class="form-group">
+                            <textarea class="form-control input-lg" maxlength="70" autofocus="" placeholder="Short description of the tukio.." name="desc" required></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <div>
+                                <button class="btn btn-danger btn-sm tukio-cancel-form" aria-hidden="true">Cancel
+                                </button>
+                                <input type='submit' class='btn btn-info btn-sm' value='Post' />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {% else %}
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    Sign In
+                </div>
+                <div class="modal-body">
+                    <h5>You need to be signed in to post a tukio..</h5>
+                </div>
+                <div class="modal-footer">
+                    <div>
+                        <a class="btn btn-info" href="/login" role="button">Sign In</a>
+                        <ul class="pull-left list-inline">
+                            <li><a href="/register">New here ? Register</a></li>
+                        </ul>
                     </div>
+                </div>
                 {% endif %}
             </div>
         </div>
     </div>
-{% endblock page-content %}
-<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.5/leaflet.markercluster.js"></script>
-<script src="/static/js/L.Control.Locate.min.js"></script>
-<script src="/static/js/leaflet.spin.min.js"></script>
-<script src="/static/js/L.Icon.Pulse.js"></script>
-<script src="/static/js/app.js"></script>
+    {% endblock page-content %}
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.5/leaflet.markercluster.js"></script>
+    <script src="/static/js/L.Control.Locate.min.js"></script>
+    <script src="/static/js/leaflet.spin.min.js"></script>
+    <script src="/static/js/L.Icon.Pulse.js"></script>
+    <script src="/static/js/app.js"></script>
 </body>
+
 </html>
